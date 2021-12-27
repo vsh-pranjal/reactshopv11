@@ -35,6 +35,7 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+  ${mobile({ marginLeft: "4px" })}
 `;
 
 const Input = styled.input`
