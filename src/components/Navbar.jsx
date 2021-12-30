@@ -3,6 +3,7 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -36,6 +37,7 @@ const SearchContainer = styled.div`
   margin-left: 25px;
   padding: 5px;
   ${mobile({ marginLeft: "4px" })}
+
 `;
 
 const Input = styled.input`
@@ -50,6 +52,7 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
+  }
   ${mobile({ fontSize: "24px" })}
 `;
 const Right = styled.div`
@@ -72,21 +75,25 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
+          <Language>IN</Language>
           <SearchContainer>
             <Input placeholder="Search" />
             <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
         </Left>
         <Center>
+          <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit'}}>
           <Logo>FASHAN.</Logo>
+          </Link>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <Link to="/register" style={{ color: 'inherit', textDecoration: 'inherit'}}><MenuItem>REGISTER</MenuItem></Link>
+          <Link to="/login" style={{ color: 'inherit', textDecoration: 'inherit'}}><MenuItem>SIGN IN</MenuItem></Link>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
+            <Link to="/cart" style={{ color: 'inherit', textDecoration: 'inherit'}}>
               <ShoppingCartOutlined />
+            </Link>
             </Badge>
           </MenuItem>
         </Right>
