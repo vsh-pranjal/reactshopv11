@@ -22,6 +22,7 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  ${mobile({ display: "none" })}
 `;
 
 const Language = styled.span`
@@ -60,7 +61,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  ${mobile({ flex: 2, justifyContent: "center", display: "none" })}
 `;
 
 const MenuItem = styled.div`
