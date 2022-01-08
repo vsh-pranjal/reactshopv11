@@ -4,20 +4,18 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
-import MDrawer from "./SideDrawer";
 
 const Container = styled.div`
   height: 60px;
   ${mobile({ height: "50px" })}
 `;
 
-
 const Wrapper = styled.div`
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ padding: "10px 0px", justifyContent: "space-around"})}
+  ${mobile({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
@@ -25,11 +23,6 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   ${mobile({ display: "none" })}
-`;
-
-const Leftalt = styled.div`
-  display: none;
-  ${mobile({ display: "flex" })}
 `;
 
 const Language = styled.span`
@@ -56,7 +49,6 @@ const Input = styled.input`
 const Center = styled.div`
   flex: 1;
   text-align: center;
-  ${mobile({  })}
 `;
 
 const Logo = styled.h1`
@@ -69,12 +61,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ display: "none" })}
-`;
-
-const Rightalt = styled.div`
-  display: none;
-  ${mobile({ display:"flex", marginRight:"30px"})}
+  ${mobile({ flex: 2, justifyContent: "center", display: "none" })}
 `;
 
 const MenuItem = styled.div`
@@ -95,34 +82,22 @@ const Navbar = () => {
             <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
         </Left>
-        <Leftalt>
-          <MDrawer />
-        </Leftalt>
         <Center>
-          <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit' }}>
-            <Logo>FASHAN.</Logo>
+          <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+          <Logo>FASHAN.</Logo>
           </Link>
         </Center>
         <Right>
-          <Link to="/register" style={{ color: 'inherit', textDecoration: 'inherit' }}><MenuItem>REGISTER</MenuItem></Link>
-          <Link to="/login" style={{ color: 'inherit', textDecoration: 'inherit' }}><MenuItem>SIGN IN</MenuItem></Link>
+          <Link to="/register" style={{ color: 'inherit', textDecoration: 'inherit'}}><MenuItem>REGISTER</MenuItem></Link>
+          <Link to="/login" style={{ color: 'inherit', textDecoration: 'inherit'}}><MenuItem>SIGN IN</MenuItem></Link>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
-              <Link to="/cart" style={{ color: 'inherit', textDecoration: 'inherit' }}>
-                <ShoppingCartOutlined />
-              </Link>
+            <Link to="/cart" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+              <ShoppingCartOutlined />
+            </Link>
             </Badge>
           </MenuItem>
         </Right>
-        <Rightalt>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <Link to="/cart" style={{ color: 'inherit', textDecoration: 'inherit' }}>
-                <ShoppingCartOutlined />
-              </Link>
-            </Badge>
-          </MenuItem>
-        </Rightalt>
       </Wrapper>
     </Container>
   );
