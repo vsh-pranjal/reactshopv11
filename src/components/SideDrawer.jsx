@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -15,6 +15,8 @@ import { Search } from "@material-ui/icons";
 import { mobile } from "../responsive";
 import LogoutIcon from '@mui/icons-material/Logout';
 import InfoIcon from '@mui/icons-material/Info';
+import { Link } from "react-router-dom";
+
 
 const SearchContainer = styled.div`
   border: 0.5px solid lightgray;
@@ -22,13 +24,13 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
-  ${mobile({ margin: "10px", padding: "10px" })}
+  ${mobile({ margin: "10px", padding: "5px" })}
 
 `;
 
 const Input = styled.input`
   border: none;
-  ${mobile({ width: "50px" })}
+  ${mobile({ width: "100%" })}
 `;
 
 export default function MDrawer() {
@@ -37,18 +39,22 @@ export default function MDrawer() {
     });
 
     const toggleDrawer = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
+        if (
+          event &&
+          event.type === 'keydown' &&
+          (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+          return;
         }
-
+    
         setState({ ...state, [anchor]: open });
-    };
+      };
 
-    const list = (anchor) => (
+    const list = () => (
         <Box
             role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+            // onClick={toggleDrawer(anchor, false)}
+            // onKeyDown={toggleDrawer(anchor, false)}
             style={{ width: "60vw" }}
         >
 
@@ -59,18 +65,22 @@ export default function MDrawer() {
             <Divider />
 
             <List>
+            <Link to="/register" style={{ color: 'inherit', textDecoration: 'inherit' }}>
                 <ListItem button>
                     <ListItemIcon>
                         <AppRegistrationIcon />
                     </ListItemIcon>
                     <ListItemText primary="Register" />
                 </ListItem>
+            </Link>
+            <Link to="/login" style={{ color: 'inherit', textDecoration: 'inherit' }}>
                 <ListItem button>
                     <ListItemIcon>
                         <LoginIcon />
                     </ListItemIcon>
                     <ListItemText primary="Login" />
                 </ListItem>
+            </Link>
             </List>
             <Divider />
 
@@ -95,14 +105,15 @@ export default function MDrawer() {
         <div>
             {['left'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}><MenuIcon /></Button>
-                    <Drawer
+                    <Button onClick={toggleDrawer(anchor, true)}><MenuIcon style={{color:"black"}}/></Button>
+                    <SwipeableDrawer
                         anchor={anchor}
                         open={state[anchor]}
                         onClose={toggleDrawer(anchor, false)}
+                        onOpen={toggleDrawer(anchor, true)}
                     >
                         {list(anchor)}
-                    </Drawer>
+                    </SwipeableDrawer>
                 </React.Fragment>
             ))}
         </div>
